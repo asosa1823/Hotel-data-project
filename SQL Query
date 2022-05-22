@@ -1,0 +1,14 @@
+This is the SQL Query used in MS SQL Server to pull the data needed for the dashboard.
+
+with hotels as (
+Select * From dbo.['2018$']
+union
+Select * From dbo.['2019$']
+union
+Select * From dbo.['2020$'])
+
+select * From hotels
+left join dbo.market_segment$
+on hotels.market_segment = market_segment$.market_segment
+left join dbo.meal_cost$
+ on meal_cost$.meal = hotels.meal
